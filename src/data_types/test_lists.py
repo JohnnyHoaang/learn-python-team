@@ -382,3 +382,35 @@ def test_list_filtering():
 
     # The original list is left untouched by both of them.
     assert numbers == [-4, -2, 0, 2, 4, 6]
+
+
+def test_empty_list():
+    """Sorting and filtering an empty list.
+
+    The empty list is a valid list and all the list operations accept it. Instead of raising an
+    error, they simply return an empty result, which makes it safe to sort or filter a list
+    without checking whether it has any elements first.
+    """
+
+    empty = []
+
+    assert isinstance(empty, list)
+    assert len(empty) == 0
+
+    # An empty list is falsey, which is the idiomatic way of testing for one.
+    assert not empty
+
+    # Sorting an empty list returns a new empty list, with or without a key.
+    assert sorted(empty) == []
+    assert sorted(empty, key=len, reverse=True) == []
+
+    # Filtering an empty list returns an empty list too, as the function is never called.
+    assert list(filter(lambda x: x > 0, empty)) == []
+    assert [x for x in empty if x > 0] == []
+
+    # Filtering a non-empty list may also legitimately produce an empty list when nothing matches.
+    numbers = [1, 2, 3]
+    assert [x for x in numbers if x > 100] == []
+
+    # The original list is still empty - none of the operations above modified it.
+    assert empty == []
