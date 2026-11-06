@@ -80,19 +80,39 @@ def test_dictionary():
 
 
 def test_dictionary_get():
-        """Test retrieving values with get()."""
+    """Test retrieving values with get()."""
 
-        fruits = {
-            'apple': 'red',
-            'banana': 'yellow',
-            'cherry': 'red'
+    fruits = {
+        'apple': 'red',
+        'banana': 'yellow',
+        'cherry': 'red'
         }
 
-        # Get the value of an existing key.
-        assert fruits.get('apple') == 'red'
+    # Get the value of an existing key.
+    assert fruits.get('apple') == 'red'
 
-        # Return None when the key does not exist.
-        assert fruits.get('orange') is None
+    # Return None when the key does not exist.
+    assert fruits.get('orange') is None
 
-        # Return a default value for a missing key.
-        assert fruits.get('orange', 'unknown') == 'unknown'
+    # Return a default value for a missing key.
+    assert fruits.get('orange', 'unknown') == 'unknown'
+
+
+def test_dictionary_pop():
+    """Test removing dictionary entries with pop()."""
+
+    fruits = {
+        'apple': 'red',
+        'banana': 'yellow',
+        'cherry': 'red'
+    }
+
+    # Remove a key and return its value.
+    removed_color = fruits.pop('banana')
+
+    assert removed_color == 'yellow'
+    assert 'banana' not in fruits
+    assert len(fruits) == 2
+
+    # Return a default value if the key is missing.
+    assert fruits.pop('orange', 'not found') == 'not found'
