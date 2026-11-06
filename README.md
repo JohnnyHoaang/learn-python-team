@@ -229,3 +229,4 @@ flake8 ./src --statistics --show-source --count
 ## Author
 
 - [@trekhleb](https://trekhleb.dev)
+- Updated README by Group 16
