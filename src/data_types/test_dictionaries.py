@@ -77,3 +77,22 @@ def test_dictionary():
     assert dictionary_for_string_keys['sape'] == 4139
     assert dictionary_for_string_keys['guido'] == 4127
     assert dictionary_for_string_keys['jack'] == 4098
+
+
+def test_dictionary_get():
+        """Test retrieving values with get()."""
+
+        fruits = {
+            'apple': 'red',
+            'banana': 'yellow',
+            'cherry': 'red'
+        }
+
+        # Get the value of an existing key.
+        assert fruits.get('apple') == 'red'
+
+        # Return None when the key does not exist.
+        assert fruits.get('orange') is None
+
+        # Return a default value for a missing key.
+        assert fruits.get('orange', 'unknown') == 'unknown'
