@@ -81,7 +81,7 @@ def test_list_methods():
     fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']
 
     # list.append(x)
-    # Add an item to the end of the list.
+    # Add an item to the end of the lis.
     # Equivalent to a[len(a):] = [x].
     fruits.append('grape')
     assert fruits == ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana', 'grape']
@@ -361,3 +361,24 @@ def test_list_sorting():
     # alphabetically.
     words = ['banana', 'kiwi', 'apple', 'fig']
     assert sorted(words, key=len) == ['fig', 'kiwi', 'apple', 'banana']
+
+
+def test_list_filtering():
+    """Filtering lists with the filter() function.
+
+    Filtering means building a new list out of only those elements of an existing list that
+    satisfy a certain condition.
+    """
+
+    numbers = [-4, -2, 0, 2, 4, 6]
+
+    # filter(function, iterable)
+    # Build an iterator from the elements of the iterable for which the function returns True.
+    # It needs to be converted back with list() to get a list out of it.
+    assert list(filter(lambda x: x > 0, numbers)) == [2, 4, 6]
+
+    # The equivalent (and usually more readable) list comprehension.
+    assert [x for x in numbers if x > 0] == [2, 4, 6]
+
+    # The original list is left untouched by both of them.
+    assert numbers == [-4, -2, 0, 2, 4, 6]
