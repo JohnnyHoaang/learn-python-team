@@ -336,3 +336,81 @@ def test_nested_list_comprehensions():
         (3, 7, 11),
         (4, 8, 12),
     ]
+
+
+def test_list_sorting():
+    """Sorting lists with the sorted() function.
+
+    Beside the in-place list.sort() method, Python provides the built-in sorted() function which
+    returns a brand new sorted list and leaves the original one untouched.
+    """
+
+    # sorted(iterable, key=None, reverse=False)
+    # Return a new sorted list from the items of the iterable.
+    numbers = [5, 2, 9, 1, 6]
+    assert sorted(numbers) == [1, 2, 5, 6, 9]
+
+    # Unlike list.sort(), the original list is not modified.
+    assert numbers == [5, 2, 9, 1, 6]
+
+    # The "reverse" argument sorts the items in descending order.
+    assert sorted(numbers, reverse=True) == [9, 6, 5, 2, 1]
+
+    # The "key" argument expects a function that is called on each element to produce the value
+    # the comparison is made upon. Here the words are sorted by their length instead of
+    # alphabetically.
+    words = ['banana', 'kiwi', 'apple', 'fig']
+    assert sorted(words, key=len) == ['fig', 'kiwi', 'apple', 'banana']
+
+
+def test_list_filtering():
+    """Filtering lists with the filter() function.
+
+    Filtering means building a new list out of only those elements of an existing list that
+    satisfy a certain condition.
+    """
+
+    numbers = [-4, -2, 0, 2, 4, 6]
+
+    # filter(function, iterable)
+    # Build an iterator from the elements of the iterable for which the function returns True.
+    # It needs to be converted back with list() to get a list out of it.
+    assert list(filter(lambda x: x > 0, numbers)) == [2, 4, 6]
+
+    # The equivalent (and usually more readable) list comprehension.
+    assert [x for x in numbers if x > 0] == [2, 4, 6]
+
+    # The original list is left untouched by both of them.
+    assert numbers == [-4, -2, 0, 2, 4, 6]
+
+
+def test_empty_list():
+    """Sorting and filtering an empty list.
+
+    The empty list is a valid list and all the list operations accept it. Instead of raising an
+    error, they simply return an empty result, which makes it safe to sort or filter a list
+    without checking whether it has any elements first.
+    """
+
+    empty = []
+
+    assert isinstance(empty, list)
+    assert len(empty) == 0
+
+    # An empty list is falsey, which is the idiomatic way of testing for one.
+    assert not empty
+
+    # Sorting an empty list returns a new empty list, with or without a key.
+    assert sorted(empty) == []
+    assert sorted(empty, key=len, reverse=True) == []
+
+    # Filtering an empty list returns an empty list too, as the function is never called.
+    assert list(filter(lambda x: x > 0, empty)) == []
+    assert [x for x in empty if x > 0] == []
+
+    # Filtering a non-empty list may also legitimately produce an empty list when nothing matches.
+    numbers = [1, 2, 3]
+    assert [x for x in numbers if x > 100] == []
+
+    # The original list is still empty - none of the operations above modified it.
+    assert empty == []
