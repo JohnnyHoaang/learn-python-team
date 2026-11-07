@@ -347,14 +347,14 @@ def test_list_sorting():
 
     # sorted(iterable, key=None, reverse=False)
     # Return a new sorted list from the items of the iterable.
-    numbers = [5, 2, 9, 1, 6]
-    assert sorted(numbers) == [1, 2, 5, 6, 9]
+    numbers = [5, 2, 9, 1, 6, 8]
+    assert sorted(numbers) == [1, 2, 5, 6, 8, 9]
 
     # Unlike list.sort(), the original list is not modified.
-    assert numbers == [5, 2, 9, 1, 6]
+    assert numbers == [5, 2, 9, 1, 6, 8]
 
     # The "reverse" argument sorts the items in descending order.
-    assert sorted(numbers, reverse=True) == [9, 6, 5, 2, 1]
+    assert sorted(numbers, reverse=True) == [9, 8, 6, 5, 2, 1]
 
     # The "key" argument expects a function that is called on each element to produce the value
     # the comparison is made upon. Here the words are sorted by their length instead of
