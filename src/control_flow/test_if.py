@@ -26,3 +26,20 @@ def test_if_statement():
         conclusion = 'Number bigger than or equal to one'
 
     assert conclusion == 'Number bigger than or equal to one'
+
+
+def test_nested_if_statement():
+    """Nested conditions can refine a decision."""
+
+    score = 85
+    result = ''
+
+    if score >= 60:
+        if score >= 80:
+            result = 'Pass with distinction'
+        else:
+            result = 'Pass'
+    else:
+        result = 'Fail'
+
+    assert result == 'Pass with distinction'
