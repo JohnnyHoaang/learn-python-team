@@ -43,3 +43,21 @@ def test_nested_if_statement():
         result = 'Fail'
 
     assert result == 'Pass with distinction'
+
+
+def test_multiple_elif_branches():
+    """Multiple elif branches select the matching temperature range."""
+
+    temperature = 22
+
+    if temperature < 0:
+        description = 'freezing'
+    elif temperature < 15:
+        description = 'cold'
+    elif temperature < 25:
+        description = 'mild'
+    else:
+        description = 'warm'
+
+    assert description == 'mild'
+    
