@@ -13,7 +13,7 @@ in other languages.
 def test_if_statement():
     """IF statement"""
 
-    number = 15
+    number = -5
     conclusion = ''
 
     if number < 0:
@@ -25,7 +25,7 @@ def test_if_statement():
     else:
         conclusion = 'Number bigger than or equal to one'
 
-    assert conclusion == 'Number bigger than or equal to one'
+    assert conclusion == 'Number is less than zero'
 
 
 def test_nested_if_statement():
@@ -60,4 +60,23 @@ def test_multiple_elif_branches():
         description = 'warm'
 
     assert description == 'mild'
+
+
+def test_independent_if_else_conditions():
+    """Independent conditions can each select their own result."""
+
+    number = 15
+
+    if number < 0:
+        sign = 'negative'
+    else:
+        sign = 'zero or positive'
+
+    if number % 2 == 0:
+        parity = 'even'
+    else:
+        parity = 'odd'
+
+    assert sign == 'zero or positive'
+    assert parity == 'odd'
     
