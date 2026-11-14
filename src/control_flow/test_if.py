@@ -60,4 +60,23 @@ def test_multiple_elif_branches():
         description = 'warm'
 
     assert description == 'mild'
+
+
+def test_independent_if_else_conditions():
+    """Independent conditions can each select their own result."""
+
+    number = 15
+
+    if number < 0:
+        sign = 'negative'
+    else:
+        sign = 'zero or positive'
+
+    if number % 2 == 0:
+        parity = 'even'
+    else:
+        parity = 'odd'
+
+    assert sign == 'zero or positive'
+    assert parity == 'odd'
     
