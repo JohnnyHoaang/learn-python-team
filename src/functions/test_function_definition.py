@@ -121,3 +121,27 @@ def test_function_definition():
     greet_with_closure = compose_greet_func_with_closure('John')
 
     assert greet_with_closure() == 'Hello there, John!'
+
+
+def caesar_cipher(plaintext, shift=3):
+    """Return plaintext encrypted with a Caesar cipher."""
+
+    encrypted_text = ""
+    for character in plaintext:
+        if character.isupper():
+            encrypted_text += chr((ord(character) - ord("A") + shift) % 26 + ord("A"))
+        elif character.islower():
+            encrypted_text += chr((ord(character) - ord("a") + shift) % 26 + ord("a"))
+        else:
+            encrypted_text += character
+    return encrypted_text
+
+
+def fibonacci_generator(number_limit):
+    """Yield Fibonacci numbers smaller than number_limit, one at a time."""
+
+    previous_number, current_number = 0, 1
+    while previous_number < number_limit:
+        yield previous_number
+        previous_number, current_number = current_number, previous_number + current_number
+
