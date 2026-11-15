@@ -145,3 +145,12 @@ def fibonacci_generator(number_limit):
         yield previous_number
         previous_number, current_number = current_number, previous_number + current_number
 
+def test_caesar_cipher_and_fibonacci_generator():
+    """Test a Caesar cipher and a generator function."""
+
+    assert caesar_cipher("Hello, World!") == "Khoor, Zruog!"
+    assert caesar_cipher("Khoor, Zruog!", shift=-3) == "Hello, World!"
+
+    # A generator produces values lazily as we iterate over it.
+    assert list(fibonacci_generator(20)) == [0, 1, 1, 2, 3, 5, 8, 13]
+
